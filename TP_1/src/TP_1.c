@@ -12,10 +12,8 @@
 #include <stdlib.h>
 #include "utn.h"
 
-int main(void) {
 
-	setbuf(stdout, NULL);
-	/*Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
+/*Hacer una calculadora. Para ello el programa iniciará y contará con un menú de opciones:
 1. Ingresar 1er operando (A=x)
 2. Ingresar 2do operando (B=y)
 3. Calcular todas las operaciones
@@ -36,10 +34,11 @@ que contenga las funciones para realizar las cinco operaciones.
 • En el menú deberán aparecer los valores actuales cargados en los operandos A y B
 (donde dice “x” e “y” en el ejemplo, se debe mostrar el número cargado)
 • Deberán contemplarse los casos de error (división por cero, etc)
-• Documentar todas las funciones
-	 *
-	 *
-	 */
+• Documentar todas las funciones*/
+
+int main(void) {
+
+	setbuf(stdout, NULL);
 	int opcionMenu;
 	int aux;
 	float primerOperando;
@@ -49,6 +48,7 @@ que contenga las funciones para realizar las cinco operaciones.
 	float resultadoSuma;
 	float resultadoResta;
 	float resultadoMultiplicacion;
+	int resultadoFactorial;
 	int flagPrimerOp;
 	int flagSegundoOp;
 
@@ -74,7 +74,7 @@ que contenga las funciones para realizar las cinco operaciones.
 		{
 			printf("\n2. Ingrese segundo operando");
 		}
-		printf("\n3. Calcular operaciones (suma, resta, division, multiplicacion y factorial");
+		printf("\n3. Calcular operaciones (suma, resta, division, multiplicacion y factorial(primer operando)");
 		printf("\n4. Informar resultados");
 		printf("\n5. Salir");
 
@@ -91,9 +91,10 @@ que contenga las funciones para realizar las cinco operaciones.
 				flagSegundoOp = utn_pedirOperando(&segundoOperando);
 				break;
 			case 3:
-				resultadoSuma = sumar((float)primerOperando, (float)segundoOperando);
-				resultadoResta = restar((float)primerOperando, (float)segundoOperando);
-				resultadoMultiplicacion = multiplicar((float)primerOperando, (float)segundoOperando);
+				resultadoSuma = sumarFloat(primerOperando, segundoOperando);
+				resultadoResta = restarFloat(primerOperando, segundoOperando);
+				resultadoMultiplicacion = multiplicarFloat(primerOperando, segundoOperando);
+				resultadoFactorial = factorial(primerOperando);
 				retornoDivision = dividir(primerOperando, segundoOperando, &resultadoDividir);
 				if(retornoDivision==1)
 				{
@@ -101,7 +102,7 @@ que contenga las funciones para realizar las cinco operaciones.
 				}
 				break;
 			case 4:
-				utn_mostrarResultado(resultadoSuma, resultadoResta, resultadoMultiplicacion, resultadoDividir);
+				utn_mostrarResultado(resultadoSuma, resultadoResta, resultadoMultiplicacion, resultadoDividir, resultadoFactorial);
 				break;
 			case 5:
 				printf("Hasta la proxima!");

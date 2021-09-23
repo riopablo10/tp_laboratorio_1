@@ -55,6 +55,51 @@ int dividir(int operadorUno, int operadorDos, float* pDireccionResultado)
 	return retorno;
 }
 
+int factorial (int numero)
+{
+	int respuesta;
+	if(numero==1 || numero == 0)
+	{
+		respuesta = 1;
+	}
+	else
+	{
+		respuesta = numero * factorial(numero-1);
+	}
+
+	return respuesta;
+}
+
+
+float sumarFloat(float operadorUno, float operadorDos)
+{
+	float resultadoSumar;
+
+	resultadoSumar = operadorUno + operadorDos;
+
+	return resultadoSumar;
+}
+
+float restarFloat(float operadorUno, float operadorDos)
+{
+	float resultadoRestar;
+
+	resultadoRestar = operadorUno - operadorDos;
+
+	return resultadoRestar;
+}
+
+float multiplicarFloat(float operadorUno, float operadorDos)
+{
+	float resultadorMultiplicar;
+
+	resultadorMultiplicar = operadorUno * operadorDos;
+
+	return resultadorMultiplicar;
+}
+
+
+
 //Funciones Get Number -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //GET ENTERO
 int utn_getNumberInt(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo, int reintentos)
@@ -158,7 +203,7 @@ int utn_pedirOperando (float* pOperando)
 	return flag;
 }
 
-void utn_mostrarResultado (float resultadoUno, float resultadoDos, float resultadoTres, float resultadoCuatro)
+void utn_mostrarResultado (float resultadoUno, float resultadoDos, float resultadoTres, float resultadoCuatro, int resultadoCinco)
 {
-	printf("La suma es: %.2f\nLa resta es: %.2f\nEl producto es: %.2f\nLa division es: %.2f\n",resultadoUno, resultadoDos, resultadoTres, resultadoCuatro);
+	printf("La suma es: %.2f\nLa resta es: %.2f\nEl producto es: %.2f\nLa division es: %.2f\nEl factorial del primer operando es: %d",resultadoUno, resultadoDos, resultadoTres, resultadoCuatro, resultadoCinco);
 }
